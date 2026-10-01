@@ -1,39 +1,29 @@
-BG4K — Windows 10/11, 64 bit
+BG4K — Windows, macOS e Linux
 
-USO
-1. Metti BG4K.exe in una cartella scrivibile (ad esempio sul Desktop).
-2. Trascina una o più foto sull'icona dell'exe e rilascia il mouse.
-3. Aspetta: nella stessa cartella dell'exe comparirà nomefoto_bg4k.png.
+Estrai il pacchetto in una cartella scrivibile.
+Windows: trascina una o più foto su BG4K.exe.
+Mac: scegli Apple Silicon (arm64) o Intel (x86_64) e trascina le foto
+sull'icona BG4K.app nel Finder. Gli output sono accanto all'app.
+Linux: esegui una volta ./Installa_collegamento.sh nella cartella estratta,
+poi usa Apri con BG4K sulle foto. Il trascinamento dipende dal desktop.
+In alternativa: ./BG4K "/percorso/foto.jpg"
 
-Non compaiono interfacce, finestre di avanzamento o richieste. Il doppio clic
-sull'exe senza foto non fa nulla. Non servono Python, Internet o una GPU.
-La prima apertura deve estrarre il modello in una cartella temporanea;
-il tempo di elaborazione dipende dal computer e dalle dimensioni della foto.
+Il risultato è nomefoto_bg4k.png, nella cartella del programma.
+Sfondo trasparente, lato lungo di 3840 pixel, proporzioni originali.
+Anche un ingresso JPG produce PNG per mantenere la trasparenza.
+Gli output esistenti vengono sostituiti senza conferma.
+Nessuna interfaccia durante l'elaborazione. Errori in BG4K_errori.log,
+se la cartella è scrivibile. Attendi il completamento.
 
-RISULTATO
-Sfondo trasparente, PNG senza perdita, lato lungo di 3840 pixel, proporzioni
-originali. Una foto verticale diventa, ad esempio, 2560 x 3840; non viene
-tagliata o deformata per ottenere un rettangolo 3840 x 2160.
-Anche un ingresso JPG produce un PNG: JPG non conserva la trasparenza.
-L'ingrandimento usa Lanczos con una lieve nitidezza: non ricrea dettaglio
-reale assente nell'originale. La rimozione automatica può sbagliare capelli,
-oggetti trasparenti o soggetti simili allo sfondo.
+Offline: nessun invio delle foto, nessun Python o GPU richiesti.
+L'ingrandimento non recupera dettagli assenti; la rimozione automatica
+può sbagliare bordi e capelli. Consigliati almeno 8 GB di RAM.
 
-Formati principali: JPG/JPEG, PNG, WEBP, BMP e TIFF. Per immagini animate o
-TIFF multipagina viene usato il primo fotogramma. HEIC/RAW non supportati.
-L'orientamento della fotocamera viene applicato. I metadati originali non
-vengono copiati nel risultato. Le foto restano sul computer.
+Windows 10/11 64 bit; macOS 14+ Apple Silicon o macOS 15+ Intel;
+Linux x86_64 con glibc 2.35+, ad esempio Ubuntu 22.04+.
+App non firmate da uno sviluppatore certificato: i controlli del sistema
+possono richiedere l'autorizzazione iniziale. Mac usa solo firma ad-hoc.
+Il test automatico macOS esegue il binario, non il gesto nel Finder.
 
-File di output con lo stesso nome vengono sostituiti, senza conferma.
-Due foto con lo stesso nome base generano lo stesso file di output.
-Gli originali non vengono modificati. Se una foto fallisce, le successive
-vengono comunque elaborate. Gli errori sono in BG4K_errori.log accanto all'exe.
-Se la cartella non è scrivibile, non è possibile salvare neppure il registro.
-Consigliati almeno 8 GB di RAM e spazio libero su disco per l'estrazione.
-
-L'exe è compilato localmente e non è firmato digitalmente. Windows potrebbe
-mostrare un avviso di reputazione per un eseguibile nuovo e non firmato.
-
-MODELLO E SORGENTE
-Modello locale IS-Net (isnet-general-use), distribuito tramite rembg.
-Il sorgente BG4K.py e le attribuzioni sono forniti accanto all'eseguibile.
+Dettagli, compilazione, istruzioni Linux e licenze nel README.md.
+https://github.com/spywork/Bg4k
