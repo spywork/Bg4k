@@ -1,0 +1,9 @@
+models/
+build/
+dist/
+release/
+__pycache__/
+*.spec
+*_bg4k.png
+BG4K_errori.log
+.venv/
