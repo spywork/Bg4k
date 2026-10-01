@@ -85,7 +85,8 @@ def build() -> Path:
     package.mkdir(exist_ok=True)
     destination = package / source.name
     if source.is_dir():
-        shutil.copytree(source, destination, dirs_exist_ok=True)
+        shutil.copytree(source, destination, dirs_exist_ok=True, symlinks=True)
+        subprocess.run(["codesign", "--verify", "--deep", "--strict", str(destination)], check=True)
     else:
         shutil.copy2(source, destination)
     for filename in ("README.md", "LEGGIMI.txt", "LICENSE", "BG4K.py", "build.py", "requirements-build.txt"):
